@@ -1,0 +1,31 @@
+[
+  {
+    "userId": "9999",
+    "name": "paasha",
+    "hashPassword": "waheguru",
+    "ticketsBooked": [
+      {
+        "origin": "Goa",
+        "destination": "Dilli",
+        "dateOfTravel": "2025-04-12T18:30:00Z",
+        "train": {
+          "trainId": "shadabadiExpress",
+          "trainNumber": 1234,
+          "seats": [
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0],
+            [0,0,0,0,0,0]
+          ],
+          "stationTimes": {
+            "goa": "09:00:00",
+            "bambai": "13:45:00",
+            "jaipur": "16:02:00",
+            "dilli": "20:35:45"
+          }
+        }
+      }
+    ]
+
+  }
+]

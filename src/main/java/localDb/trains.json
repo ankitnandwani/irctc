@@ -1,0 +1,40 @@
+[
+  {
+    "trainId": "rajdhaniExpress",
+    "trainNumber": 1335,
+    "seats": [
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0]
+    ],
+    "stationTimes": {
+      "goa": "09:00:00",
+      "bambai": "13:45:00",
+      "jaipur": "16:02:00",
+      "dilli": "20:35:45"
+    },
+    "stations": [
+      "goa", "bambai", "jaipur", "dilli"
+    ]
+  },
+  {
+    "trainId": "vandeBharat",
+    "trainNumber": 1435,
+    "seats": [
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0],
+      [0,0,0,0,0,0]
+    ],
+    "stationTimes": {
+      "goa": "09:00:00",
+      "bambai": "13:45:00",
+      "jaipur": "16:02:00",
+      "dilli": "20:35:45"
+    },
+    "stations": [
+      "goa", "bambai", "jaipur", "dilli"
+    ]
+  }
+]
