@@ -22,16 +22,23 @@ public class UserBookingService {
     private Gson gson = new Gson();
     private User user;
     private List<User> userList;
-    public UserBookingService(User user){
+    public UserBookingService(User user) {
         this.user=user;
+        loadUsers();
+    }
+
+    public UserBookingService() {
+        loadUsers();
+    }
+
+    public List<User> loadUsers() {
         File users = new File(USERS_PATH);
         try (FileReader reader = new FileReader(users)){
             Type userListType = new TypeToken<List<User>>() {}.getType();
-            userList = gson.fromJson(reader, userListType);
+            return gson.fromJson(reader, userListType);
         } catch (IOException e){
             throw new RuntimeException("Failed to load users from json", e);
         }
-
     }
 
     public Boolean loginUser(){
