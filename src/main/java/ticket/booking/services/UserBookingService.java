@@ -3,6 +3,7 @@ package ticket.booking.services;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import ticket.booking.entities.Ticket;
+import ticket.booking.entities.Train;
 import ticket.booking.entities.User;
 import ticket.booking.utils.UserServiceUtil;
 
@@ -72,5 +73,10 @@ public class UserBookingService {
         tickets.remove(user.getTicketsBooked().stream().filter(e->e.getTicketId().equals(ticketId)).findFirst().get());
         saveUserListToFile();
         return true;
+    }
+
+    public List<Train> getTrains(String origin, String dest) {
+        TrainService trainService = new TrainService();
+        return trainService.searchTrains(origin, dest);
     }
 }

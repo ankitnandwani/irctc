@@ -1,10 +1,13 @@
 package ticket.booking;
 
+import ticket.booking.entities.Train;
 import ticket.booking.entities.User;
 import ticket.booking.services.UserBookingService;
 import ticket.booking.utils.UserServiceUtil;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -33,23 +36,39 @@ public class Main {
                     userBookingService.signUp(userToSignup);
                     break;
                 case 2:
-                    try {
-                        userBookingService.logIn(scanner);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println("Enter username to login: ");
+                    String usernameToLogin = scanner.next();
+                    System.out.println("Enter password: ");
+                    String passwordToLogin = scanner.next();
+                    User userToLogin = User.builder().name(usernameToLogin).password(passwordToLogin).hashPassword(UserServiceUtil.hashPassword(passwordToLogin)).build();
+                    userBookingService = new UserBookingService(userToLogin);
                     break;
                 case 3:
-                    userBookingService.fetchBookings(scanner);
+                    System.out.println("Fetching your bookings");
+                    userBookingService.fetchBooking();
                     break;
                 case 4:
-                    userBookingService.searchTrains(scanner);
+                    System.out.println("Type your origin");
+                    String origin = scanner.next();
+                    System.out.println("Type your destination");
+                    String dest = scanner.next();
+                    List<Train> trains = userBookingService.getTrains(origin, dest);
+                    int index=1;
+                    for (Train train: trains){
+                        System.out.println(index+". Train id : "+train.getTrainId());
+                        for (Map.Entry<String, String> entry: train.getStationTimes().entrySet()){
+                            System.out.println("Station: "+entry.getKey()+" | Time: "+entry.getValue());
+                        }
+                        index++;
+                    }
+                    System.out.println("Select a train by typing 1,2,3...");
+                    Train trainSelectedForBooking = trains.get(scanner.nextInt());
                     break;
                 case 5:
-                    userBookingService.bookSeat(scanner);
+                    
                     break;
                 case 6:
-                    userBookingService.cancelBooking(scanner);
+                    
                     break;
                 case 7:
                     System.out.println("Exiting...");
